@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
-import env from "react-dotenv"
+import { getFirestore } from "firebase/firestore";
+
+
 
 
 const firebaseConfig = {
+ 
     apiKey: env.API_KEY,
     authDomain: env.AUTH_DOMAIN,
     databaseURL: env.DATABASE_URL,
