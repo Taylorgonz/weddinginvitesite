@@ -10,7 +10,7 @@ import stamp from "./photos/stamp.png";
 
 
 function App() {
-  const [guests, setGuests] = useState([]);
+  // const [guests, setGuests] = useState([]);
   const [formComplete, setFormComplete] = useState(null);
 
   const form = useRef();
@@ -36,15 +36,15 @@ function App() {
   }
 
 
-  useEffect(() => {
-    const getGuests = async () => {
-      const data = await getDocs(guestRef);
-      setGuests(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
+  // useEffect(() => {
+  //   const getGuests = async () => {
+  //     const data = await getDocs(guestRef);
+  //     setGuests(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  //   }
 
 
-    getGuests();
-  }, [])
+  //   getGuests();
+  // }, [])
 
   return (
 
@@ -61,7 +61,7 @@ function App() {
       {/* Main display with stamp and arrows */}
       <div className="infoCont">
         <div className="infoMain">
-          <img className="stamp" src={stamp} />
+          <img alt="wax initial stamp "className="stamp" src={stamp} />
 
           <svg class="arrows">
             <path className="a1" d="M0 0 L30 32 L60 0"></path>
