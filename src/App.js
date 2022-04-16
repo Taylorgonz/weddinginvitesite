@@ -82,7 +82,7 @@ function App() {
         <div id="reserve" className="infoRes">
           <div>
             <h1>RSVP</h1>
-            <h4 className="plusone">Due to limited capacity this is not a plus one event, we only have space for the names listed on your invitation.<br/>Thanks for understanding!</h4>
+            <h4 className="plusone">Due to limited capacity this is not a plus one event, we only have space for those listed on your invitation.<br/>Thanks for understanding!</h4>
             <form ref={form} id="rsvpForm" className="resForm"
             onSubmit={(e) => {
               
