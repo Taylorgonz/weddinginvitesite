@@ -21,9 +21,8 @@ function App() {
   const guestRef = collection(db, "guests");
 
   const sendEmail = (e) => {
-    e.preventDefault();
 
-    emailjs.sendForm('gmail', 'wedding_template', form.current, 'YOUR_USER_ID')
+    emailjs.sendForm('service_5gsgrn9', 'wedding_template', form.current, "-y-c3EujLL6PiSZ-E")
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -36,14 +35,14 @@ function App() {
     document.getElementById("rsvpForm").reset()
   }
 
-  const checkForm = () => {
-    if (email.current.value != "" && name.current.value != "" && attending.current.value != 'none') {
-      setFormComplete(true);
-    }
-    else {
-      setFormComplete(false);
-    }
-  }
+  // const checkForm = () => {
+  //   if (email.current.value != "" && name.current.value != "" && attending.current.value != 'none') {
+  //     setFormComplete(true);
+  //   }
+  //   else {
+  //     setFormComplete(false);
+  //   }
+  // }
 
   useEffect(() => {
     const getGuests = async () => {
@@ -54,7 +53,6 @@ function App() {
 
     getGuests();
   }, [])
-  console.log(guests)
 
   return (
 
@@ -95,10 +93,10 @@ function App() {
             <form ref={form} id="rsvpForm" className="resForm"
             onSubmit={(e) => {
               
-              console.log(attending.current.value, email.current.value, name.current.value)
               e.preventDefault()
               if (email.current.value != "" && name.current.value != "" && attending.current.value != "none") {
                 createGuest()
+                sendEmail()
                 setFormComplete(true)
                 attending.current.value =''
                 email.current.value = ''

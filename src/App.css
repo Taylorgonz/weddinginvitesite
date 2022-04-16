@@ -120,22 +120,25 @@ div.infoTime p.resMenuLinks a:active {
 
 
 div.infoRes {
+  text-align: center;
   height: 100vh;
   width: 30vw;
-  margin: 0px;
   display: flex ;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   
 }
 div.infoRes h1 {
   margin-bottom: 1em;
   font-size: 3em;
+  margin-inline: center;
 }
 div.infoRes form {
   display:flex;
   flex-direction: column;
+  
 }
 
 
@@ -149,9 +152,31 @@ form.resForm select{
   border-radius: .5em ;
   background-color: rgb(4, 58, 59);
   color: rgb(251, 238, 242);
-  width:25em;
+  width: 25vw;
   height: 2.5em;
+  overflow: hidden;
 
+}
+button.rsvpButton {
+  margin-inline: auto;
+  width: 18vw;
+  height: 5vh;
+  background-color: rgb(4, 58, 59) ;
+  border: none;
+  color: rgb(251, 238, 242);
+  border-radius: .5em;
+}
+
+button.rsvpButton:hover {
+  background-color: rgb(251, 238, 242);
+  border: 2px solid rgb(4, 58, 59);
+  box-shadow: 3px 3px rgb(4, 58, 59) ;
+  color: rgb(4, 58, 59);
+  position:sticky;
+  margin-bottom: -4px;
+}
+h3.formPopup {
+  
 }
 div.infoMenu {
   height: 100vh;
