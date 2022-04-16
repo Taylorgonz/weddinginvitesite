@@ -128,9 +128,9 @@ function App() {
 
         </div>
 
-        <div id="menu" className="infoMenu">
+        {/* <div id="menu" className="infoMenu">
 
-        </div>
+        </div> */}
 
       </div>
 
