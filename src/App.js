@@ -1,8 +1,8 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState,  useRef } from 'react';
 import './App.css';
 import { db } from "./firebase"
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import emailjs from "emailjs-com";
 import stamp from "./photos/stamp.png";
 
