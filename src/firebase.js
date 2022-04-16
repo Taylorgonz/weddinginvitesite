@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import env from "react-dotenv"
+// import env from "react-dotenv"
 
 
 

@@ -35,14 +35,6 @@ function App() {
     document.getElementById("rsvpForm").reset()
   }
 
-  // const checkForm = () => {
-  //   if (email.current.value != "" && name.current.value != "" && attending.current.value != 'none') {
-  //     setFormComplete(true);
-  //   }
-  //   else {
-  //     setFormComplete(false);
-  //   }
-  // }
 
   useEffect(() => {
     const getGuests = async () => {
@@ -94,7 +86,7 @@ function App() {
             onSubmit={(e) => {
               
               e.preventDefault()
-              if (email.current.value != "" && name.current.value != "" && attending.current.value != "none") {
+              if (email.current.value !== "" && name.current.value !== "" && attending.current.value !== "none") {
                 createGuest()
                 sendEmail()
                 setFormComplete(true)
