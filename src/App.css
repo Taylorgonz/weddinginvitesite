@@ -83,6 +83,7 @@ div.infoTime {
   height: 100vh;
   color:rgb(251, 238, 242)
 }
+
 div.infoTime h2,
 div.infoTime h3 {
   margin: 0;
@@ -131,9 +132,16 @@ div.infoRes {
   
 }
 div.infoRes h1 {
-  margin-bottom: 1em;
+  margin-bottom: 0;
   font-size: 3em;
   margin-inline: center;
+}
+h4.plusone{
+  width: 20vw;
+  margin-inline: auto;
+  margin-top: 0px;
+  font-size: .75em;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 div.infoRes form {
   display:flex;

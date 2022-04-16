@@ -75,13 +75,14 @@ function App() {
           <h3>6pm-10pm</h3>
           <p>Place</p>
           <h3>Rising Tide Brewery <br /> 103 Fox Street <br /> Portland, ME</h3>
-          <p className="resMenuLinks"><a href="#reserve">Reserve</a> || <a href="#menu">Menu</a> </p>
+          <p className="resMenuLinks"><a href="#reserve">Reserve</a>  </p>
         </div>
 
 
         <div id="reserve" className="infoRes">
           <div>
             <h1>RSVP</h1>
+            <h4 className="plusone">Due to limited capacity this is not a plus one event, we only have space for the names listed on your invitation.<br/>Thanks for understanding!</h4>
             <form ref={form} id="rsvpForm" className="resForm"
             onSubmit={(e) => {
               
