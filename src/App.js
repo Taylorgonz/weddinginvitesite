@@ -1,30 +1,43 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { db } from "./firebase"
 import { collection, getDocs, addDoc } from "firebase/firestore";
+import emailjs from "emailjs-com";
 import stamp from "./photos/stamp.png";
+
 
 
 
 function App() {
   const [guests, setGuests] = useState([]);
-  const [newGuest, setNewGuest] = useState("")
-  const [email, setEmail] = useState("")
-  const [attending, setAttending] = useState("")
-  const [formComplete, setFormComplete] = useState(false);
+  const [formComplete, setFormComplete] = useState(null);
+
+  const form = useRef();
+  const name = useRef();
+  const email = useRef();
+  const attending = useRef();
 
   const guestRef = collection(db, "guests");
 
-  console.log(newGuest, email, attending, formComplete)
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('gmail', 'wedding_template', form.current, 'YOUR_USER_ID')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   const createGuest = async () => {
-    await addDoc(guestRef, { name: newGuest, email: email, attending: attending });
+    await addDoc(guestRef, { name: name.current.value, email: email.current.value, attending: attending.current.value });
     document.getElementById("rsvpForm").reset()
   }
 
   const checkForm = () => {
-    if (email != "" && newGuest != "" && attending != "") {
+    if (email.current.value != "" && name.current.value != "" && attending.current.value != 'none') {
       setFormComplete(true);
     }
     else {
@@ -79,38 +92,47 @@ function App() {
         <div id="reserve" className="infoRes">
           <div>
             <h1>RSVP</h1>
-            <form id="rsvpForm" className="resForm">
+            <form ref={form} id="rsvpForm" className="resForm"
+            onSubmit={(e) => {
+              
+              console.log(attending.current.value, email.current.value, name.current.value)
+              e.preventDefault()
+              if (email.current.value != "" && name.current.value != "" && attending.current.value != "none") {
+                createGuest()
+                setFormComplete(true)
+                attending.current.value =''
+                email.current.value = ''
+                name.current.value = ''
+              }
+              else {
+                setFormComplete(false);
+              }
+            }}>
+
+              <label>Name: </label>
+              <input name='name' id='name' type="text" placeholder='Dolly Parton' ref={name} />
+
+              <label>Email:</label>
+              <input name="email" id="email" type="text" placeholder="Dolly@dollywood.com" ref={email} />
+
               <label >RSVP</label>
-              <select
-                onChange={(event) => {
-                  setAttending(event.target.value)
-                  checkForm()
-                }} >
+              <select name='attending' ref={attending}>
                 <option value="none" selected>Select an Option</option>
                 <option value="Attending">Attending</option>
                 <option value="Not Attending">Not Attending</option>
                 <option value="Pending">Pending...</option>
               </select>
-              <label>Name: </label>
-              <input name='name' id='name' type="text" placeholder='Dolly Parton'
-                onChange={(event) => {
-                  setNewGuest(event.target.value)
-                  checkForm()
-                }} />
 
-              <label>Email:</label>
-              <input name="email" id="email" type="text" placeholder="Dolly@dollywood.com"
-                onChange={(event) => {
-                  setEmail(event.target.value)
-                  checkForm()
-                }} />
 
-              
-              <button onClick={(e) => {
-                e.preventDefault()
-                createGuest()
-              }}
+              <button className="rsvpButton" 
               > Enter </button>
+              {formComplete === true &&
+                <h3 className='formPopup'>Thank you, can't wait to party with you!</h3>
+              }
+              {formComplete === false &&
+                <h3 className='formPopup' >Please fill all boxes!</h3>
+              }
+
             </form>
           </div>
 
