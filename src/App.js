@@ -104,7 +104,7 @@ function App() {
               <input name='name' id='name' type="text" placeholder='Dolly Parton' ref={name} />
 
               <label>Email:</label>
-              <input name="email" id="email" type="text" placeholder="Dolly@dollywood.com" ref={email} />
+              <input name="email" id="email" type="email" placeholder="Dolly@dollywood.com" ref={email} />
 
               <label >RSVP</label>
               <select name='attending' ref={attending}>
