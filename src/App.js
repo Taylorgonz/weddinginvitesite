@@ -56,7 +56,7 @@ function App() {
         <h1 className="imageTitle">
           STEPHEN & TAYLOR
         </h1>
-        <p>Join us for free beer, food, fun and help us celebrate our love together!</p>
+        <p>Join us for a beautiful sail, drinks and snacks to celebrate!</p>
       </div>
       {/* Main display with stamp and arrows */}
       <div className="infoCont">
@@ -72,9 +72,14 @@ function App() {
         <div className="infoTime">
           <h2>Sunday, August 14th</h2>
           <p>Time</p>
-          <h3>6pm-10pm</h3>
+          <h3>10:30-1pm</h3>
+          <div className="arrival-info">
+            Make sure to give yourself plenty of time to find parking and get to the pier before hand
+          </div>
           <p>Place</p>
-          <h3>Rising Tide Brewery <br /> 103 Fox Street <br /> Portland, ME</h3>
+          <h3>Maine State Pier</h3>
+          <span className="msa">(Maine Sailing Adventures)</span>
+          <h4> Portland, ME</h4>
           <p className="resMenuLinks"><a href="#reserve">Reserve</a>  </p>
         </div>
 
