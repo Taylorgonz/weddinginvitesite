@@ -89,8 +89,10 @@ div.infoTime h3 {
   margin: 0;
 }
 div.infoTime p {
-  color: rgb(4, 58, 59);
-  background-color: rgb(251, 238, 242) ;
+  color: rgb(251, 238, 242);
+  background-color: rgb(4, 58, 59);
+  border: 2px solid rgb(251, 238, 242);
+  box-shadow: 3px 3px rgb(251, 238, 242);
   padding: .4em .75em;
   border-radius: .25em;
   
@@ -107,6 +109,7 @@ div.arrival-info {
   margin-top: 6px;
   border-top:2px solid rgb(251, 238, 242);
   border-bottom:2px solid rgb(251, 238, 242);
+
   /* border-radius: .25em; */
   padding: 5px;
 }
@@ -181,6 +184,7 @@ form.resForm select{
 }
 form.resForm input:focus-visible,
 form.resForm select:focus-visible {
+  box-shadow: 5px 5px rgb(4, 58, 59) ;
   outline: none;
 }
 form.resFrom select option {
