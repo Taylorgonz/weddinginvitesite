@@ -78,7 +78,7 @@ function App() {
           </div>
           <p>Place</p>
           <h3>Maine State Pier</h3>
-          <span className="msa">(Maine Sailing Adventures)</span>
+          <span className="msa">Maps link: <a href="https://g.page/francesproject?share">Maine Sailing Adventures</a></span>
           <h4> Portland, ME</h4>
           <p className="resMenuLinks"><a href="#reserve">Reserve</a>  </p>
         </div>

@@ -118,6 +118,9 @@ span.msa {
   margin-top: .25rem;
   margin-bottom: .5em;
 }
+span.msa a {
+  color:rgb(251, 238, 242)
+}
 p.resMenuLinks a {
   color: rgb(251, 238, 242);
   margin: 0em .5em;
