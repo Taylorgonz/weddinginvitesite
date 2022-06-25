@@ -72,7 +72,6 @@ function App() {
     getGuests();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  console.log(guests);
 
   return (
     <div className="App">
