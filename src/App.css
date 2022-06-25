@@ -72,10 +72,11 @@ img.stamp{
   height: 12em;
 }
 
-div.infoTime {
+div.infoTime,
+div.infoReception {
   margin:0px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   text-align: center;
@@ -83,12 +84,29 @@ div.infoTime {
   height: 100vh;
   color:rgb(251, 238, 242)
 }
-
+div.infoBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid rgb(251, 238, 242);
+  border-radius: .25em;
+  width: 80%;
+  padding: .75rem;
+}
+div.infoTime h1,
+div.infoReception h1 {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
 div.infoTime h2,
-div.infoTime h3 {
+div.infoTime h3,
+div.infoReception h2,
+div.infoReception h3 {
   margin: 0;
 }
-div.infoTime p {
+div.infoTime p,
+div.infoReception p {
   color: rgb(251, 238, 242);
   background-color: rgb(4, 58, 59);
   border: 2px solid rgb(251, 238, 242);
@@ -106,38 +124,63 @@ div.infoTime p.resMenuLinks {
 div.arrival-info {
   font-size: small;
   width: 75%;
-  margin-top: 6px;
+  margin-top: .5rem;
   border-top:2px solid rgb(251, 238, 242);
   border-bottom:2px solid rgb(251, 238, 242);
-
-  /* border-radius: .25em; */
   padding: 5px;
 }
 span.msa {
-  font-size: small;
+  font-size: medium;
   margin-top: .25rem;
-  margin-bottom: .5em;
+  margin-bottom: 1.5em;
 }
 span.msa a {
   color:rgb(251, 238, 242)
 }
-p.resMenuLinks a {
+div.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+button.reserveButton {
+  margin-inline: auto;
+  width: 40%;
+  height: 5vh;
+  background-color: rgb(251, 238, 242) ;
+  border: none;
+  color: rgb(4, 58, 59) ;
+  border-radius: .5em;
+  margin-bottom: 1rem;
+}
+button.receptionButton {
+  margin-inline: auto;
+  width: 40%;
+  height: 5vh;
+  background-color: transparent;
+  border: 2px solid rgb(251, 238, 242);
+  border-radius: .5em;
+  margin-bottom: 1rem;
   color: rgb(251, 238, 242);
-  margin: 0em .5em;
-}
-div.infoTime p.resMenuLinks a:visited{
-  color: rgb(251, 238, 242)
 }
 
-div.infoTime p.resMenuLinks a:hover,
-div.infoTime p.resMenuLinks a:active {
+button.reserveButton:visited{
+  color: rgb(251, 238, 242);
+}
+
+button.reserveButton:active,
+button.reserveButton:hover {
+  border: 2px solid rgb(251, 238, 242);
+  box-shadow: 3px 3px rgb(251, 238, 242);
+  background-color: rgb(4, 58, 59) ;
+  color: rgb(251, 238, 242);
+}
+button.receptionButton:active,
+button.receptionButton:hover {
+  border: 3px solid rgb(4, 58, 59);
+  box-shadow: 3px 3px rgb(251, 238, 242);
+  background-color: rgb(251, 238, 242) ;
   color: rgb(4, 58, 59);
-  text-shadow: 1.5px 1.5px rgb(251, 238, 242);
- 
-  text-decoration: none;
 }
-
-
 
 
 div.infoRes {
@@ -145,11 +188,10 @@ div.infoRes {
   height: 100vh;
   background-color:rgb(251, 238, 242) ;
   display: flex ;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
-
-  
 }
 div.infoRes h1 {
   margin-bottom: 0;
@@ -166,9 +208,11 @@ h4.plusone{
 div.infoRes form {
   display:flex;
   flex-direction: column;
-  
 }
-
+p.error {
+  margin:0;
+  color: red;
+}
 
 form.resForm input,
 form.resForm select{
@@ -192,6 +236,24 @@ form.resForm select:focus-visible {
 }
 form.resFrom select option {
   background-color: rgb(251, 238, 242);
+}
+div.infoRes button.receptionButton {
+  margin-inline: auto;
+  width: 40%;
+  height: 5vh;
+  background-color: transparent;
+  border: 3px solid rgb(4, 58, 59);
+  border-radius: .5em;
+  margin-bottom: 1rem;
+  color: rgb(4, 58, 59);
+}
+
+div.infoRes button.receptionButton:active,
+div.infoRes button.receptionButton:hover {
+  border: 3px solid rgb(251, 238, 242);
+  box-shadow: 3px 3px rgb(4, 58, 59);
+  background-color: rgb(4, 58, 59) ;
+  color: rgb(251, 238, 242);
 }
 button.rsvpButton {
   margin-inline: auto;
@@ -336,13 +398,6 @@ div.infoMenu {
     color: white;
   }
   div.infoTime {
-    margin:0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    
     height: 100vh;
     color:rgb(251, 238, 242)
   }
