@@ -6,16 +6,12 @@ import { collection, addDoc } from "firebase/firestore";
 import emailjs from "emailjs-com";
 import stamp from "./photos/stamp.png";
 
-
-
-
 function App() {
   // const [guests, setGuests] = useState([]);
   const [formComplete, setFormComplete] = useState(null);
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [attendingError, setAttendingError] = useState(false);
-
 
   const form = useRef();
   const name = useRef();
@@ -57,7 +53,6 @@ function App() {
     document.getElementById("rsvpForm").reset()
   }
 
-
   // useEffect(() => {
   //   const getGuests = async () => {
   //     const data = await getDocs(guestRef);
@@ -69,9 +64,7 @@ function App() {
   // }, [])
 
   return (
-
     <div className="App">
-
 
       <div className="imageCont">
 
@@ -110,8 +103,6 @@ function App() {
             <button className="reserveButton" onClick={() => window.location.href = "#reserve"}>Reserve</button>
           </div>
         </div>
-
-
 
         <div id="reserve" className="infoRes">
           <h1>RSVP</h1>
@@ -164,9 +155,10 @@ function App() {
             </form>
 
           </div>
-
-          <button className="receptionButton" onClick={() => window.location.href = "#reception"}>Reception Info</button>
-
+          <div className="buttonDiv">
+            <button className="receptionButton" onClick={() => window.location.href = "#reception"}>Reception Info</button>
+            <button className="rsvpButton" onClick={() => window.location.href = "#ceremony"}>Ceremony Info</button>
+          </div>
 
         </div>
 
