@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.088649b2.css",
+    "main.js": "/static/js/main.3ef8271b.js",
+    "static/media/headlight.jpg": "/static/media/headlight.722f7a94370a5db492ca.jpg",
+    "static/media/stamp.png": "/static/media/stamp.c0ba8410895ad7c6b787.png",
+    "index.html": "/index.html",
+    "main.088649b2.css.map": "/static/css/main.088649b2.css.map",
+    "main.3ef8271b.js.map": "/static/js/main.3ef8271b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.088649b2.css",
+    "static/js/main.3ef8271b.js"
+  ]
+}
