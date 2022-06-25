@@ -112,7 +112,6 @@ function App() {
               onSubmit={(e) => {
                 e.preventDefault();
 
-                console.log(emailError, nameError, attendingError);
                 if (!errorCheck()) {
                   createGuest()
                   sendEmail()
