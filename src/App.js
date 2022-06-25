@@ -1,24 +1,25 @@
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './App.css';
 import { db } from "./firebase"
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import emailjs from "emailjs-com";
 import stamp from "./photos/stamp.png";
 
 function App() {
-  // const [guests, setGuests] = useState([]);
+  const [guests, setGuests] = useState([]);
   const [formComplete, setFormComplete] = useState(null);
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [attendingError, setAttendingError] = useState(false);
-  const [attendingResponse, setAttendingResponse] = useState('')
+  const [attendingResponse, setAttendingResponse] = useState()
+  const [attendingValue, setAttendingValue] = useState();
+  const [guestExists, setGuestExists] = useState(false);
 
   const form = useRef();
   const name = useRef();
   const email = useRef();
   const attending = useRef();
-
   const guestRef = collection(db, "guests");
 
   const sendEmail = (e) => {
@@ -40,31 +41,37 @@ function App() {
       error = true;
     }
     if (!email.current.value || !email.current.value.match(validRegex)) {
-      error = true;
       setEmailError(true);
+      error = true;
     }
     if (!attending.current.value || attending.current.value === "none") {
-      error = true;
       setAttendingError(true);
+      error = true;
     }
     return error;
   }
   const createGuest = async () => {
-
     await addDoc(guestRef, { name: name.current.value, email: email.current.value, attending: attending.current.value });
   }
 
-  // useEffect(() => {
-  //   const getGuests = async () => {
-  //     const data = await getDocs(guestRef);
-  //     setGuests(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-  //   }
+  const guestCheck = () => {
+    setAttendingResponse(null);
+   const checkList = guests.filter((guest) => guest.email === email.current.value)
+   if(checkList.length > 0) {
+    setGuestExists(true);
+    return true;
+   }
+   setGuestExists(false);
+   return false;
+  }
+  const getGuests = async () => {
+    const data = await getDocs(guestRef);
+    setGuests(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  }
 
-
-  //   getGuests();
-  // }, [])
-
-  // console.log(attending.current.value);
+  useEffect(() => {
+    getGuests();
+  }, [])
 
   return (
     <div className="App">
@@ -81,7 +88,7 @@ function App() {
         <div className="infoMain">
           <img alt="wax initial stamp " className="stamp" src={stamp} />
 
-          <svg class="arrows">
+          <svg className="arrows">
             <path className="a1" d="M0 0 L30 32 L60 0"></path>
             <path className="a2" d="M0 20 L30 52 L60 20"></path>
           </svg>
@@ -111,23 +118,7 @@ function App() {
           <h1>RSVP</h1>
           <div>
             <h4 className="plusone">Due to limited capacity this is not a plus one event, we only have space for those listed on your invitation.<br />Thanks for understanding!</h4>
-            <form ref={form} id="rsvpForm" className="resForm"
-              onSubmit={(e) => {
-                e.preventDefault();
-
-                if (!errorCheck()) {
-                  createGuest()
-                  sendEmail()
-                  setAttendingResponse(attending.current?.value === 'Attending' ? "Attending" : "Not Attending") 
-                  setFormComplete(true)
-                  attending.current.value = ''
-                  email.current.value = ''
-                  name.current.value = ''
-                }
-                else {
-                  setFormComplete(false);
-                }
-              }}>
+            <form ref={form} id="rsvpForm" className="resForm">
               <div>
                 <label>Name: </label>
                 <input name='name' id='name' type="text" placeholder='Dolly Parton' ref={name} />
@@ -139,7 +130,7 @@ function App() {
 
                 <label >RSVP</label>
                 <select name='attending' ref={attending}>
-                  <option value="none" selected>Select an Option</option>
+                  <option value="none" defaultValue>Select an Option</option>
                   <option value="Attending">Attending</option>
                   <option value="Not Attending">Not Attending</option>
                 </select>
@@ -148,13 +139,33 @@ function App() {
               {formComplete === true &&
                 <h3 className='formPopup'>
                   {attendingResponse === "Attending"
-                    ? "Thank you, can't wait to party with you!"
-                    : "Sorry to hear it, we'll have to party another time!"}
+                    && "Thank you, can't wait to party with you!"}
+                    {attendingResponse === "Not Attending" && "Sorry to hear it, we'll have to party another time!" }
                 </h3>
               }
 
-              <button className="rsvpButton"
+              <button onClick={(e) => {
+                e.preventDefault();
+                if (!errorCheck()) {
+                  if (!guestCheck()) {
+                    
+                    sendEmail()
+                    setAttendingResponse(attending.current?.value === "Attending" ? "Attending" : "Not Attending") 
+                    setFormComplete(true)
+                    createGuest().then(() => {
+                      attending.current.value = null
+                      email.current.value = ''
+                      name.current.value = ''
+                    })
+                    getGuests();
+                  }
+                }
+                else {
+                  setFormComplete(false);
+                }
+              }} className="rsvpButton"
               > Enter </button>
+              {guestExists && <p>Looks like you already RSVP'd!</p>}
             </form>
 
           </div>
