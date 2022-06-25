@@ -12,6 +12,7 @@ function App() {
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [attendingError, setAttendingError] = useState(false);
+  const [attendingResponse, setAttendingResponse] = useState('')
 
   const form = useRef();
   const name = useRef();
@@ -49,8 +50,8 @@ function App() {
     return error;
   }
   const createGuest = async () => {
+
     await addDoc(guestRef, { name: name.current.value, email: email.current.value, attending: attending.current.value });
-    document.getElementById("rsvpForm").reset()
   }
 
   // useEffect(() => {
@@ -62,6 +63,8 @@ function App() {
 
   //   getGuests();
   // }, [])
+
+  // console.log(attending.current.value);
 
   return (
     <div className="App">
@@ -115,6 +118,7 @@ function App() {
                 if (!errorCheck()) {
                   createGuest()
                   sendEmail()
+                  setAttendingResponse(attending.current?.value === 'Attending' ? "Attending" : "Not Attending") 
                   setFormComplete(true)
                   attending.current.value = ''
                   email.current.value = ''
@@ -143,7 +147,7 @@ function App() {
               </div>
               {formComplete === true &&
                 <h3 className='formPopup'>
-                  {attending.current.value === attending
+                  {attendingResponse === "Attending"
                     ? "Thank you, can't wait to party with you!"
                     : "Sorry to hear it, we'll have to party another time!"}
                 </h3>
