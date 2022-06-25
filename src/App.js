@@ -95,7 +95,7 @@ function App() {
             </div>
             <p>Place</p>
             <h2>Maine State Pier</h2>
-            <span className="msa">Maps link: <a target="_blank" href="https://g.page/francesproject?share">Maine Sailing Adventures</a></span>
+            <span className="msa">Maps link: <a target="_blank" rel="noopener noreferrer" href="https://g.page/francesproject?share">Maine Sailing Adventures</a></span>
             <h3> Portland, ME</h3>
           </div>
           <div className="buttonDiv">
