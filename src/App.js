@@ -91,7 +91,7 @@ function App() {
             <p>Time</p>
             <h2>10:30-1pm</h2>
             <div className="arrival-info">
-              Make sure to give yourself plenty of time to find parking and get to the pier before hand
+              Make sure to give yourself plenty of time to find parking and get to the pier beforehand
             </div>
             <p>Place</p>
             <h2>Maine State Pier</h2>
