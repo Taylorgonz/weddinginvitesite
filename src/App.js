@@ -13,7 +13,6 @@ function App() {
   const [emailError, setEmailError] = useState(false);
   const [attendingError, setAttendingError] = useState(false);
   const [attendingResponse, setAttendingResponse] = useState()
-  const [attendingValue, setAttendingValue] = useState();
   const [guestExists, setGuestExists] = useState(false);
 
   const form = useRef();
@@ -71,7 +70,9 @@ function App() {
 
   useEffect(() => {
     getGuests();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  console.log(guests);
 
   return (
     <div className="App">
